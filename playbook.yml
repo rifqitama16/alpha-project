@@ -1,0 +1,43 @@
+---
+
+- name: copy server.sh and chmod to u+x
+  hosts: [server]
+  tasks:
+    - copy:
+        src: server.sh
+        dest: [dest]
+    - file:
+        dest: [path/of/server.sh]
+        mode: u+x
+
+- name: copy client.sh and chmod to u+x
+  hosts: [client]
+  tasks:
+    - copy:
+        src: client.sh
+        dest: [dest]
+    - file:
+        dest: [path/of/client.sh]
+        mode: u+x
+
+- name: create output.log and report.txt
+  hosts: [server]
+  tasks:
+    - file:
+        path: [/dest/path/of/output.log]
+        state: touch
+    - file:
+        path: [dest/path/of/report.txt]
+        state: touch
+
+- name: execute server.sh
+  hosts: [server]
+  tasks:
+    - command: bash [path/to/server.sh]
+
+- name: execute client.sh
+  hosts: [client]
+  tasks:
+    - command: bash [path/to/client.sh]
+
+...
