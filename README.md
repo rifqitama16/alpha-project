@@ -23,4 +23,4 @@ AlphaClient akan bekerja tiap kali muncul baris baru di /var/log/auth.log (didef
   * `AS_INPUT` : Merujuk ke file yang sama dengan `AC_OUTPUT`
   * `AS_OUTPUT` : Lokasi tujuan yang nantinya akan ditampilkan oleh web server
   
-  Untuk memudahkan instalasi, disertai pula file playbook Ansible (`playbook.yml`)
+Untuk memudahkan instalasi, disertai pula file playbook Ansible (`playbook.yml`). Beberapa hal yang harus diubah adalah path serta server dan client target yang disesuaikan dengan file hosts.
