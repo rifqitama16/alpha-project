@@ -7,9 +7,9 @@
   tasks:
     - copy:
         src: server.sh
-        dest: [/home/whoami/alpha-server/]
+        dest: [/home/whoami/Documents/alpha-server/]
     - file:
-        dest: [/home/whoami/alpha-server/server.sh]
+        dest: [/home/whoami/Documents/alpha-server/server.sh]
         mode: u+x
 
 - name: copy client.sh and chmod to u+x
@@ -17,16 +17,16 @@
   tasks:
     - copy:
         src: client.sh
-        dest: [/home/whoami/alpha-client/]
+        dest: [/home/whoami/Documents/alpha-client/]
     - file:
-        dest: [/home/whoami/alpha-client/client.sh]
+        dest: [/home/whoami/Documents/alpha-client/client.sh]
         mode: u+x
 
 - name: create output.log and report.txt
   hosts: [192.168.56.11]
   tasks:
     - file:
-        path: [/home/whoami/alpha-server/output.log]
+        path: [/home/whoami/Documents/alpha-server/output.log]
         state: touch
     - file:
         path: [/var/www/html/alpha-project/report.txt]
@@ -35,11 +35,11 @@
 - name: execute server.sh
   hosts: [192.168.56.11]
   tasks:
-    - command: bash [/home/whoami/alpha-server/server.sh]
+    - command: bash [/home/whoami/Documents/alpha-server/server.sh]
 
 - name: execute client.sh
   hosts: [client]
   tasks:
-    - command: bash [/home/whoami/alpha-client/client.sh]
+    - command: bash [/home/whoami/Documents/alpha-client/client.sh]
 
 ...
