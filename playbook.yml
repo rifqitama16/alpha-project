@@ -1,13 +1,15 @@
 ---
 
+#ubah dan sesuaikan semua yang diapit oleh kurung siku
+
 - name: copy server.sh and chmod to u+x
-  hosts: [server]
+  hosts: [192.168.56.11]
   tasks:
     - copy:
         src: server.sh
-        dest: [dest]
+        dest: [/home/whoami/alpha-server/]
     - file:
-        dest: [path/of/server.sh]
+        dest: [/home/whoami/alpha-server/server.sh]
         mode: u+x
 
 - name: copy client.sh and chmod to u+x
@@ -15,29 +17,29 @@
   tasks:
     - copy:
         src: client.sh
-        dest: [dest]
+        dest: [/home/whoami/alpha-client/]
     - file:
-        dest: [path/of/client.sh]
+        dest: [/home/whoami/alpha-client/client.sh]
         mode: u+x
 
 - name: create output.log and report.txt
-  hosts: [server]
+  hosts: [192.168.56.11]
   tasks:
     - file:
-        path: [/dest/path/of/output.log]
+        path: [/home/whoami/alpha-server/output.log]
         state: touch
     - file:
-        path: [dest/path/of/report.txt]
+        path: [/var/www/html/alpha-project/report.txt]
         state: touch
 
 - name: execute server.sh
-  hosts: [server]
+  hosts: [192.168.56.11]
   tasks:
-    - command: bash [path/to/server.sh]
+    - command: bash [/home/whoami/alpha-server/server.sh]
 
 - name: execute client.sh
   hosts: [client]
   tasks:
-    - command: bash [path/to/client.sh]
+    - command: bash [/home/whoami/alpha-client/client.sh]
 
 ...
